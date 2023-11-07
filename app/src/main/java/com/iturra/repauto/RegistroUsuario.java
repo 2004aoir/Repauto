@@ -33,6 +33,9 @@ public class RegistroUsuario extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registro_usuario);
 
+        mFirestore = FirebaseFirestore.getInstance();
+        mAuth = FirebaseAuth.getInstance();
+
         nombre_usuario = findViewById(R.id.txt_reg_nombre_usuario);
         correo = findViewById(R.id.txt_reg_correo);
         contrasena = findViewById(R.id.txt_reg_contrasena);
