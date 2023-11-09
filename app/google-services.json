@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "725828324067",
+    "project_id": "repauto-621de",
+    "storage_bucket": "repauto-621de.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:725828324067:android:9b82fd6c539e4d6f8853d6",
+        "android_client_info": {
+          "package_name": "com.iturra.repauto"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBFbImnvjemzMwm8vClga0PN6FE9N73N5o"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

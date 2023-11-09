@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".EditarProducto">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/img_ed_imagen"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_centerInParent="true"
+            android:scaleType="fitXY"
+            android:src="@drawable/goku">
+
+        </ImageView>
+
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="15dp">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+            <Button
+                android:id="@+id/btn_ed_añadir_imagen"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="Añadir"
+                android:textSize="30dp">
+
+            </Button>
+
+
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+            <Button
+                android:id="@+id/btn_ed_borrar_imagen"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="Eliminar"
+                android:textSize="30dp">
+
+            </Button>
+
+        </RelativeLayout>
+
+
+
+    </LinearLayout>
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <EditText
+            android:id="@+id/txt_ed_nombre"
+            android:layout_width="380dp"
+            android:layout_height="70dp"
+            android:layout_centerInParent="true"
+            android:hint="Nombre del Producto"
+            android:inputType="text"
+            android:singleLine="false">
+
+        </EditText>
+
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <EditText
+            android:id="@+id/txt_ed_modelos_compatibles"
+            android:layout_width="380dp"
+            android:layout_height="70dp"
+            android:layout_centerInParent="true"
+            android:hint="Modelos Compatibles"
+            android:inputType="text"
+            android:singleLine="false"></EditText>
+
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <EditText
+            android:id="@+id/txt_ed_descripcion"
+            android:layout_width="380dp"
+            android:layout_height="200dp"
+            android:layout_centerInParent="true"
+            android:hint="Descripcion del Producto"
+            android:inputType="text"
+            android:singleLine="false">
+
+        </EditText>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="15dp">
+
+        <Button
+            android:id="@+id/btn_ed_guardar_cambios"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="Guardar Cambios"
+            android:textSize="30dp">
+
+        </Button>
+    </RelativeLayout>
+
+
+</LinearLayout>
