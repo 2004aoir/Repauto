@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".Login">
+    tools:context=".RecuperarContrasena">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -53,7 +53,7 @@
         android:padding="30dp"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/txt_log_correo"
+            android:id="@+id/txt_rec_correo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Correo"
@@ -63,45 +63,10 @@
         </com.google.android.material.textfield.TextInputEditText>
 
     </com.google.android.material.textfield.TextInputLayout>
-    <com.google.android.material.textfield.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="30dp"
-        app:passwordToggleEnabled="true"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/txt_log_contrasena"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Contraseña"
-            android:textSize="20dp"
-            android:inputType="textPassword">
 
-        </com.google.android.material.textfield.TextInputEditText>
 
-    </com.google.android.material.textfield.TextInputLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="10dp">
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
 
-            <TextView
-                android:id="@+id/init_recuperacion"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
-                android:text="¿olvidasde tu contraseña? Recuperala AQUI"
-                android:textSize="20dp">
-
-            </TextView>
-
-        </RelativeLayout>
-
-    </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -113,16 +78,15 @@
             android:layout_height="match_parent">
 
             <Button
-                android:id="@+id/botonIniciarSesion"
+                android:id="@+id/botonRecuperarContrasena"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
                 android:backgroundTint="@color/rojo"
-                android:drawableTint="@color/white"
-                android:text="Iniciar Sesión"
                 android:drawableRight="@drawable/baseline_person_outline_24"
-                android:textSize="25sp">
-
+                android:drawableTint="@color/white"
+                android:text="Recuperar Contraseña"
+                android:textSize="23sp">
 
             </Button>
 

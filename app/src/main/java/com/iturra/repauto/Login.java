@@ -22,7 +22,7 @@ import org.checkerframework.checker.nullness.qual.NonNull;
 
 public class Login extends AppCompatActivity {
 
-    TextView irRegistro;
+    TextView irRegistro,irRecuperacion;
     Button botonIniciarSesion;
     EditText correoL,contrasenaL;
     FirebaseFirestore mFirestore;
@@ -39,12 +39,20 @@ public class Login extends AppCompatActivity {
         correoL = findViewById(R.id.txt_log_correo);
         contrasenaL = findViewById(R.id.txt_log_contrasena);
 
-        irRegistro = findViewById(R.id.init_registro);
+        irRecuperacion = findViewById(R.id.init_recuperacion);
         botonIniciarSesion = findViewById(R.id.botonIniciarSesion);
+        irRegistro = findViewById(R.id.init_registro);
         irRegistro.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(Login.this, RegistroUsuario.class));
+            }
+        });
+
+        irRecuperacion.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(Login.this, RecuperarContrasena.class));
             }
         });
 
