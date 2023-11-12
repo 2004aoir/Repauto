@@ -13,6 +13,7 @@ public class MainActivity extends AppCompatActivity {
 
     Button botonCerrarSesion;
     private FirebaseAuth mAuth;
+    
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         mAuth = FirebaseAuth.getInstance();
 
-        botonCerrarSesion = findViewById(R.id.botoncerrarsesion);
+        /*botonCerrarSesion = findViewById(R.id.botoncerrarsesion);
 
         botonCerrarSesion.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -30,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(new Intent(MainActivity.this,Login.class));
 
             }
-        });
+        });*/
 
     }
 }
