@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".ControlAccion">
+    tools:context=".ControlAdmin">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -15,8 +15,9 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
+
         <Button
-            android:id="@+id/btn_empl_cerrar_sesion"
+            android:id="@+id/btn_admin_cerrar_sesion"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Cerrar sesion"

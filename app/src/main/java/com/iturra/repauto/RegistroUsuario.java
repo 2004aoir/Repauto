@@ -74,7 +74,6 @@ public class RegistroUsuario extends AppCompatActivity {
                 map.put("id",id);
                 map.put("nombre",nombreUser);
                 map.put("correo",correoUser);
-                map.put("contraseña",contraseñaUser);
                 map.put("rol",rol);
 
                 mFirestore.collection("user").document(id).set(map).addOnSuccessListener(new OnSuccessListener<Void>() {

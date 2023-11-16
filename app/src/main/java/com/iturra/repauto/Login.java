@@ -17,6 +17,7 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.DocumentReference;
 
 import org.checkerframework.checker.nullness.qual.NonNull;
 
@@ -77,10 +78,44 @@ public class Login extends AppCompatActivity {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful()){
-                    finish();
-                    startActivity(new Intent(Login.this, MainActivity.class));
-                    Toast.makeText(Login.this,"Bienvenido",Toast.LENGTH_SHORT).show();
-                }else{
+                    FirebaseUser user = mAuth.getCurrentUser();
+                    if (user != null) {
+                        String uid = user.getUid();
+
+                        // Acceder al documento del usuario en Firestore
+                        DocumentReference userRef = mFirestore.collection("user").document(uid);
+                        userRef.get().addOnSuccessListener(documentSnapshot -> {
+                            if (documentSnapshot.exists()) {
+                                String rol = documentSnapshot.getString("rol");
+
+                                // Verificar el rol y redirigir a la actividad correspondiente
+                                if (rol != null) {
+                                    switch (rol) {
+                                        case "usuario":
+                                            // Redirigir a la actividad de usuario
+                                            startActivity(new Intent(Login.this, MainActivity.class));
+                                            break;
+                                        case "admin":
+                                            // Redirigir a la actividad de admin
+                                            startActivity(new Intent(Login.this, ControlAdmin.class));
+                                            break;
+                                        case "empleado":
+                                            // Redirigir a la actividad de empleado
+                                            startActivity(new Intent(Login.this, ControlAccion.class));
+                                            break;
+                                        default:
+                                            // Rol desconocido, manejar según sea necesario
+                                            break;
+                                    }
+                                    finish(); // Finalizar la actividad actual
+                                }
+                            }
+                        }).addOnFailureListener(e -> {
+                            // Manejar errores al obtener el documento
+                            Toast.makeText(Login.this, "Error al obtener información del usuario", Toast.LENGTH_SHORT).show();
+                        });
+                    }
+                } else {
                     Toast.makeText(Login.this,"Error al iniciar sesión",Toast.LENGTH_SHORT).show();
                 }
             }
@@ -91,6 +126,7 @@ public class Login extends AppCompatActivity {
             }
         });
     }
+
     protected void onStart(){
         super.onStart();
         FirebaseUser user = mAuth.getCurrentUser();
