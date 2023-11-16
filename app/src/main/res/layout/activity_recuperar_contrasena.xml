@@ -85,6 +85,7 @@
                 android:backgroundTint="@color/rojo"
                 android:drawableRight="@drawable/baseline_person_outline_24"
                 android:drawableTint="@color/white"
+                android:textColor="@color/white"
                 android:text="Recuperar Contraseña"
                 android:textSize="23sp">
 
