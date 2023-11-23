@@ -10,18 +10,53 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <ImageView
-            android:id="@+id/img_np_imagen"
-            android:layout_width="150dp"
-            android:layout_height="150dp"
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:scaleType="fitXY"
-            android:src="@drawable/goku">
+            android:text="Ingrese los datos del producto"
+            android:textSize="25dp">
 
-        </ImageView>
-
-
+        </TextView>
     </RelativeLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="10dp">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="Imagen"
+                android:textSize="22dp">
+
+            </TextView>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+
+            <ImageView
+                android:id="@+id/img_np_imagen"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_centerInParent="true"
+                android:scaleType="fitXY"
+                android:src="@drawable/imagen_vacia">
+
+            </ImageView>
+
+        </RelativeLayout>
+
+    </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -38,8 +73,12 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
+                android:backgroundTint="@color/verde"
+                android:drawableRight="@drawable/baseline_add_circle_outline_24"
+                android:drawableTint="@color/white"
+                android:textColor="@color/white"
                 android:text="Añadir"
-                android:textSize="30dp">
+                android:textSize="25dp">
 
             </Button>
 
@@ -55,8 +94,12 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
+                android:backgroundTint="@color/rojo"
+                android:drawableRight="@drawable/baseline_delete_24"
+                android:drawableTint="@color/white"
+                android:textColor="@color/white"
                 android:text="Eliminar"
-                android:textSize="30dp">
+                android:textSize="25dp">
 
             </Button>
 
@@ -65,6 +108,19 @@
 
 
     </LinearLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="Informacion"
+            android:textSize="20dp">
+
+        </TextView>
+    </RelativeLayout>
 
 
     <RelativeLayout
@@ -106,7 +162,7 @@
         <EditText
             android:id="@+id/txt_np_descripcion"
             android:layout_width="380dp"
-            android:layout_height="200dp"
+            android:layout_height="180dp"
             android:layout_centerInParent="true"
             android:hint="Descripcion del Producto"
             android:inputType="text"
@@ -115,6 +171,45 @@
         </EditText>
 
     </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+
+            <EditText
+                android:id="@+id/txt_np_stock"
+                android:layout_width="80dp"
+                android:layout_height="70dp"
+                android:layout_centerInParent="true"
+                android:hint="Stock"
+                android:inputType="number"
+                android:singleLine="false">
+
+            </EditText>
+
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+
+            <EditText
+                android:id="@+id/txt_np_precio"
+                android:layout_width="140dp"
+                android:layout_height="70dp"
+                android:layout_centerInParent="true"
+                android:hint="precio"
+                android:inputType="number"
+                android:singleLine="false">
+
+            </EditText>
+
+        </RelativeLayout>
+    </LinearLayout>
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -126,6 +221,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
+            android:backgroundTint="@color/azul"
+            android:drawableRight="@drawable/baseline_upload_24"
+            android:drawableTint="@color/white"
+            android:textColor="@color/white"
             android:text="Añadir producto"
             android:textSize="30dp">
 

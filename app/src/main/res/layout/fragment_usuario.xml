@@ -25,6 +25,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center|bottom"
+            android:drawableRight="@drawable/baseline_logout_24"
+            android:drawableTint="@color/white"
+            android:backgroundTint="@color/rojo"
+            android:textColor="@color/white"
             android:text="Cerrar sesion"
             android:textSize="30dp">
 

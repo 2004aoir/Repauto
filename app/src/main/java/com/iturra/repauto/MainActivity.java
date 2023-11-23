@@ -25,13 +25,10 @@ import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class MainActivity extends AppCompatActivity {
-    private FirebaseAuth mAuth;
 
     BottomNavigationView bottomNavigationView;
-
     FloatingActionButton fab;
 
-    Button botonCerrarSesion;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

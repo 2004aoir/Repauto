@@ -118,7 +118,7 @@
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
                 android:backgroundTint="@color/rojo"
-                android:drawableRight="@drawable/baseline_person_outline_24"
+                android:drawableRight="@drawable/baseline_login_24"
                 android:drawableTint="@color/white"
                 android:text="Iniciar Sesión"
                 android:textColor="@color/white"

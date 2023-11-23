@@ -6,13 +6,14 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.LinearLayout;
 
 import com.google.firebase.auth.FirebaseAuth;
 
 public class ControlAdmin extends AppCompatActivity {
 
+    LinearLayout anadirProducto;
     private FirebaseAuth mAuth;
-
     Button botonCerrarSesion;
 
     @Override
@@ -20,7 +21,15 @@ public class ControlAdmin extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_control_admin);
 
+        anadirProducto = findViewById(R.id.lay_ca_anadir_producto);
         botonCerrarSesion = findViewById(R.id.btn_admin_cerrar_sesion);
+
+        anadirProducto.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(ControlAdmin.this,NuevoProducto.class));
+            }
+        });
         botonCerrarSesion.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
