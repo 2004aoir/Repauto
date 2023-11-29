@@ -10,6 +10,9 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.os.Handler;
+import android.widget.TextView;
+
+import firebase.com.protolitewrapper.BuildConfig;
 
 public class Splash extends AppCompatActivity {
 
@@ -18,6 +21,10 @@ public class Splash extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
 
+
+        TextView versionTextView = findViewById(R.id.txtVersion);
+        String versionName = BuildConfig.VERSION_NAME;
+        versionTextView.setText("Versión: " + versionName);
         Handler bypass = new Handler();
         bypass.postDelayed(new Runnable() {
             @Override

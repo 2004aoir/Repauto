@@ -20,6 +20,7 @@ public class ControlAdmin extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_control_admin);
+        mAuth = FirebaseAuth.getInstance();
 
         anadirProducto = findViewById(R.id.lay_ca_anadir_producto);
         botonCerrarSesion = findViewById(R.id.btn_admin_cerrar_sesion);

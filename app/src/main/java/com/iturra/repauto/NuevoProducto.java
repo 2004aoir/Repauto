@@ -25,7 +25,6 @@ import java.util.Map;
 
 public class NuevoProducto extends AppCompatActivity {
 
-    private String imageUrl;
     private ImageView imageView;
     private Uri imageUri;
     private StorageReference storageReference;
@@ -52,7 +51,6 @@ public class NuevoProducto extends AppCompatActivity {
 
         // Acción al presionar el botón "Añadir"
         btnAddImage.setOnClickListener(view -> {
-            // Abre la galería para seleccionar una imagen
             Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
             intent.setType("image/*");
             startActivityForResult(Intent.createChooser(intent, "Selecciona una imagen"), 1);
@@ -60,44 +58,60 @@ public class NuevoProducto extends AppCompatActivity {
 
         // Acción al presionar el botón "Eliminar"
         btnDeleteImage.setOnClickListener(view -> {
-            // Verificar si hay una imagen para eliminar
-            if (imageUrl != null && !imageUrl.isEmpty()) {
-                String fileName = imageUrl.substring(imageUrl.lastIndexOf("/") + 1);
-
-                // Eliminar la imagen del Storage
-                StorageReference fileRef = storageReference.child("img_productos/" + fileName);
-                fileRef.delete()
-                        .addOnSuccessListener(aVoid -> {
-                            // Manejar la eliminación exitosa de la imagen
-                            Toast.makeText(NuevoProducto.this, "Imagen eliminada exitosamente", Toast.LENGTH_SHORT).show();
-                            // Establecer la imagen predeterminada en imageView
-                            imageView.setImageResource(R.drawable.imagen_vacia);
-                            // También podrías borrar la referencia a la imagen actual
-                            imageUri = null;
-                            imageUrl = null; // Limpiar la URL almacenada
-                        })
-                        .addOnFailureListener(e -> {
-                            // Manejar errores en la eliminación de la imagen
-                            Toast.makeText(NuevoProducto.this, "Error al eliminar la imagen", Toast.LENGTH_SHORT).show();
-                        });
+            // Verificar si hay una imagen seleccionada
+            if (imageUri != null) {
+                // Eliminar la imagen de la interfaz y restablecer las variables relacionadas
+                imageView.setImageResource(R.drawable.imagen_vacia); // Establece la imagen por defecto
+                imageUri = null; // Elimina la referencia a la URI de la imagen seleccionada
+                Toast.makeText(NuevoProducto.this, "Imagen eliminada", Toast.LENGTH_SHORT).show();
             } else {
-                // No hay URL de imagen almacenada
-                Toast.makeText(NuevoProducto.this, "No hay imagen para eliminar", Toast.LENGTH_SHORT).show();
+                Toast.makeText(NuevoProducto.this, "No hay ninguna imagen para eliminar", Toast.LENGTH_SHORT).show();
             }
         });
-
-
 
         // Acción al presionar el botón "Añadir producto"
         btnAddProduct.setOnClickListener(view -> {
             // Aquí recopila los datos del formulario (nombre, modelos compatibles, descripción, imagen URL)
 
             // Ejemplo de recopilación de datos (sustituye esto con tu lógica para obtener los datos del formulario)
-            String nombreProducto = nombreP.getText().toString();
-            String modelosCompatibles = modelos_compatiblesP.getText().toString();
-            String descripcion = decripcionP.getText().toString();
-            Integer precio = Integer.valueOf(precioP.getText().toString());
-            Integer stock = Integer.valueOf(stockP.getText().toString());
+            String nombreProducto = nombreP.getText().toString().trim();
+            String modelosCompatibles = modelos_compatiblesP.getText().toString().trim();
+            String descripcion = decripcionP.getText().toString().trim();
+            String precioString = precioP.getText().toString().trim();
+            String stockString = stockP.getText().toString().trim();
+
+            if (nombreProducto.isEmpty()) {
+                // Mostrar Toast para el campo de nombre vacío
+                Toast.makeText(NuevoProducto.this, "Por favor, ingresa un nombre", Toast.LENGTH_SHORT).show();
+                return;
+            }
+
+            if (modelosCompatibles.isEmpty()) {
+                // Mostrar Toast para el campo de modelos compatibles vacío
+                Toast.makeText(NuevoProducto.this, "Por favor, ingresa modelos compatibles", Toast.LENGTH_SHORT).show();
+                return;
+            }
+
+            if (descripcion.isEmpty()) {
+                // Mostrar Toast para el campo de descripción vacío
+                Toast.makeText(NuevoProducto.this, "Por favor, ingresa al menos una breve descripción", Toast.LENGTH_SHORT).show();
+                return;
+            }
+
+            if (precioString.isEmpty()) {
+                // Mostrar Toast para el campo de precio vacío
+                Toast.makeText(NuevoProducto.this, "Por favor, ingresa un precio", Toast.LENGTH_SHORT).show();
+                return;
+            }
+
+            if (stockString.isEmpty()) {
+                // Mostrar Toast para el campo de stock vacío
+                Toast.makeText(NuevoProducto.this, "Por favor, ingresa el stock disponible", Toast.LENGTH_SHORT).show();
+                return;
+            }
+
+            int precio = Integer.parseInt(precioString);
+            int stock = Integer.parseInt(stockString);
 
             // Verificar si hay una imagen seleccionada
             if (imageUri != null) {
@@ -157,24 +171,13 @@ public class NuevoProducto extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == 1 && resultCode == RESULT_OK && data != null && data.getData() != null) {
             imageUri = data.getData();
-
-            // Subir la imagen al Storage
-            StorageReference fileRef = storageReference.child("img_productos/" + System.currentTimeMillis() + "." + getFileExtension(imageUri));
-            fileRef.putFile(imageUri)
-                    .addOnSuccessListener(taskSnapshot -> {
-                        // Obtener la URL de la imagen y mostrarla en imageView usando Picasso
-                        fileRef.getDownloadUrl().addOnSuccessListener(uri -> {
-                            Picasso.get().load(uri).into(imageView);
-                            // Guardar la URL de la imagen en alguna variable si necesitas usarla posteriormente
-                            String imageUrl = uri.toString();
-                        });
-                    })
-                    .addOnFailureListener(e -> {
-                        // Manejar errores en la carga de la imagen
-                        Toast.makeText(NuevoProducto.this, "Error al subir la imagen", Toast.LENGTH_SHORT).show();
-                    });
+            // No subas la imagen aquí, deja esa lógica para el botón "Añadir producto"
+            // Esto evita cargar la imagen dos veces
+            Picasso.get().load(imageUri).into(imageView);
+            // imageUrl = uri.toString(); // No necesitas guardar la URL aquí
         }
     }
+
 
     // Método para obtener la extensión del archivo de la imagen
     private String getFileExtension(Uri uri) {
