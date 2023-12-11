@@ -18,6 +18,9 @@
         android:theme="@style/Theme.Repauto"
         tools:targetApi="31">
         <activity
+            android:name=".DetalleProducto"
+            android:exported="false" />
+        <activity
             android:name=".ControlAdmin"
             android:exported="false" />
         <activity

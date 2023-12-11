@@ -2,6 +2,7 @@ package com.iturra.repauto;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -127,13 +128,52 @@ public class Login extends AppCompatActivity {
         });
     }
 
-    protected void onStart(){
+    @Override
+    protected void onStart() {
         super.onStart();
-        FirebaseUser user = mAuth.getCurrentUser();
-        if (user != null){
-            startActivity(new Intent(Login.this,MainActivity.class));
-            finish();
-        }
 
+        FirebaseUser currentUser = mAuth.getCurrentUser();
+        if (currentUser != null) {
+            ProgressDialog progressDialog = new ProgressDialog(this);
+            progressDialog.setMessage("Verificando Credenciales...");
+            progressDialog.setCancelable(false); // Evita que se pueda cancelar
+
+            progressDialog.show(); // Mostrar el ProgressDialog antes de obtener los datos
+
+            String uid = currentUser.getUid();
+            DocumentReference userRef = mFirestore.collection("user").document(uid);
+
+            userRef.get().addOnSuccessListener(documentSnapshot -> {
+                progressDialog.dismiss(); // Ocultar el ProgressDialog una vez que se han obtenido los datos
+
+                if (documentSnapshot.exists()) {
+                    String rol = documentSnapshot.getString("rol");
+
+                    if (rol != null) {
+                        switch (rol) {
+                            case "usuario":
+                                startActivity(new Intent(Login.this, MainActivity.class));
+                                break;
+                            case "admin":
+                                startActivity(new Intent(Login.this, ControlAdmin.class));
+                                break;
+                            case "empleado":
+                                startActivity(new Intent(Login.this, ControlAccion.class));
+                                break;
+                            default:
+                                // Manejar un rol desconocido si es necesario
+                                break;
+                        }
+                        finish(); // Finalizar la actividad actual
+                    }
+                }
+            }).addOnFailureListener(e -> {
+                progressDialog.dismiss(); // Ocultar el ProgressDialog en caso de error
+                // Manejar errores al obtener el documento
+                Toast.makeText(Login.this, "Error al obtener información del usuario", Toast.LENGTH_SHORT).show();
+            });
+        }
     }
+
+
 }

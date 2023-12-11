@@ -20,13 +20,13 @@
                 android:layout_height="wrap_content">
 
                 <ImageView
-                    android:id="@+id/imagenR"
+                    android:id="@+id/imagenP"
                     android:layout_width="300dp"
                     android:layout_height="200dp"
                     android:layout_centerInParent="true"
                     android:padding="15dp"
                     android:scaleType="fitXY"
-                    android:src="@drawable/goku">
+                    android:src="@drawable/imagen_vacia">
 
                 </ImageView>
 
@@ -44,12 +44,13 @@
                 android:layout_weight="1">
 
                 <TextView
-                    android:id="@+id/nombreR"
+                    android:id="@+id/nombreP"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerInParent="true"
                     android:text="Nombre"
-                    android:textSize="20dp">
+                    android:textSize="20dp"
+                    android:textColor="@color/black">
 
                 </TextView>
 
@@ -65,12 +66,13 @@
                     android:layout_weight="1">
 
                     <TextView
-                        android:id="@+id/precioR"
+                        android:id="@+id/precioP"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerInParent="true"
                         android:text="Precio"
-                        android:textSize="20dp">
+                        android:textSize="20dp"
+                        android:textColor="@color/black">
 
                     </TextView>
 
@@ -81,12 +83,13 @@
                     android:layout_weight="1">
 
                     <TextView
-                        android:id="@+id/stockR"
+                        android:id="@+id/stockP"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerInParent="true"
                         android:text="Stock"
-                        android:textSize="20dp">
+                        android:textSize="20dp"
+                        android:textColor="@color/black">
 
                     </TextView>
 
@@ -106,7 +109,7 @@
                 android:layout_height="match_parent">
 
                 <Button
-                    android:id="@+id/eliminarR"
+                    android:id="@+id/agregarPC"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerInParent="true"
@@ -114,7 +117,8 @@
                     android:drawableRight="@drawable/baseline_shopping_cart_24"
                     android:drawableTint="@color/white"
                     android:text="Agregar al carrito"
-                    android:textSize="20sp">
+                    android:textColor="@color/white"
+                    android:textSize="20dp">
 
 
                 </Button>
