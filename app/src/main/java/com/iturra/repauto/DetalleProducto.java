@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -65,8 +66,8 @@ public class DetalleProducto extends AppCompatActivity {
                             Nombre.setText(nombre);
                             Precio.setText("Valor: $" + String.valueOf(precio));
                             Stock.setText("Cant. Disponible: " + String.valueOf(stock));
-                            ModelosC.setText("Modelos Compatibles: " + modelosCompatibles);
-                            Descripcion.setText("Descripcion: " + descripcion);
+                            ModelosC.setText(modelosCompatibles);
+                            Descripcion.setText(descripcion);
 
                             try {
                                 if (imagen != null && !imagen.isEmpty()) {
@@ -94,6 +95,7 @@ public class DetalleProducto extends AppCompatActivity {
                     @Override
                     public void onFailure(@NonNull Exception e) {
                         // Manejar errores al obtener datos desde Firebase
+                        Toast.makeText(DetalleProducto.this, "Error. Al cargar los Datos del producto", Toast.LENGTH_SHORT).show();
                     }
                 });
     }

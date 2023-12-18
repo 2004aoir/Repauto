@@ -36,6 +36,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/baseline_add_24"
+        android:backgroundTint="@color/rojo"
         android:contentDescription="Acción importante"
         android:layout_gravity="center|bottom"
         android:layout_marginBottom="20dp"

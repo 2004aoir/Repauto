@@ -97,8 +97,8 @@
                 android:backgroundTint="@color/rojo"
                 android:drawableRight="@drawable/baseline_delete_24"
                 android:drawableTint="@color/white"
-                android:textColor="@color/white"
                 android:text="Eliminar"
+                android:textColor="@color/white"
                 android:textSize="25dp">
 
             </Button>

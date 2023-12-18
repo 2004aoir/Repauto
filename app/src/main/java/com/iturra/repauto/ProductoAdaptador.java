@@ -42,9 +42,9 @@ public class ProductoAdaptador extends FirestoreRecyclerAdapter<Producto, Produc
         DocumentSnapshot dSnapshot = getSnapshots().getSnapshot(holder.getAdapterPosition());
         final String productId = dSnapshot.getId();
 
-        holder.nombre.setText("Producto: " + producto.getNombre());
-        holder.precio.setText( "Valor: $" + String.valueOf(producto.getPrecio()));
-        holder.stock.setText("Stock: " + String.valueOf(producto.getStock()));
+        holder.nombre.setText(producto.getNombre());
+        holder.precio.setText( "$" + String.valueOf(producto.getPrecio()));
+        holder.stock.setText("Cant. Disp: " + String.valueOf(producto.getStock()));
         try {
             String imagen = producto.getImageUrl();
             if (imagen != null && !imagen.isEmpty()) {
@@ -101,12 +101,13 @@ public class ProductoAdaptador extends FirestoreRecyclerAdapter<Producto, Produc
         carritoInfo.put("imagenProducto", producto.getImageUrl());
         carritoInfo.put("fechaRetiro","");
         carritoInfo.put("estadoProducto",estadoProducto);
-        carritoInfo.put("CantidadProducto", cantidadP);
+        carritoInfo.put("cantidadProducto", cantidadP);
 
         mFirestore.collection("carrito").add(carritoInfo)
                 .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
                     @Override
                     public void onSuccess(DocumentReference documentReference) {
+                        disminuirStock(productId);
                         Toast.makeText(activity, "Producto agregado al carrito.", Toast.LENGTH_SHORT).show();
                     }
                 })
@@ -116,6 +117,42 @@ public class ProductoAdaptador extends FirestoreRecyclerAdapter<Producto, Produc
                         Toast.makeText(activity, "Error al agregar el producto al carrito.", Toast.LENGTH_SHORT).show();
                     }
                 });
+    }
+
+    private void disminuirStock(String productId) {
+        // Obtener la referencia al documento en la colección
+        DocumentReference stockRef = mFirestore.collection("productos").document(productId);
+
+        // Actualizar el campo "cantidad" disminuyendo en uno
+        stockRef.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+            @Override
+            public void onSuccess(DocumentSnapshot documentSnapshot) {
+                if (documentSnapshot.exists()) {
+                    // Obtener la cantidad actual
+                    int cantidadActual = documentSnapshot.getLong("stock").intValue();
+
+                    // Disminuir la cantidad en 1
+                    int nuevaCantidad = cantidadActual - 1;
+
+                    // Actualizar el campo
+                    stockRef.update("stock", nuevaCantidad)
+                            .addOnSuccessListener(new OnSuccessListener<Void>() {
+                                @Override
+                                public void onSuccess(Void aVoid) {
+                                    Log.d("Stock", "Cantidad actualizada en stock.");
+                                }
+                            })
+                            .addOnFailureListener(new OnFailureListener() {
+                                @Override
+                                public void onFailure(@NonNull Exception e) {
+                                    Log.e("Stock", "Error al actualizar la cantidad en stock: " + e.getMessage());
+                                }
+                            });
+                } else {
+                    Log.e("Stock", "La colecion de stock no existe.");
+                }
+            }
+        });
     }
 
     // Resto del código para onCreateViewHolder y ViewHolder sigue igual

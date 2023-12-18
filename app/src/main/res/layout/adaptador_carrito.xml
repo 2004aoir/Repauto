@@ -9,18 +9,18 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:orientation="horizontal">
         <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="match_parent">
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="match_parent">
 
                 <ImageView
-                    android:id="@+id/imagenP"
-                    android:layout_width="300dp"
-                    android:layout_height="200dp"
+                    android:id="@+id/imagenCC"
+                    android:layout_width="90dp"
+                    android:layout_height="90dp"
                     android:layout_centerInParent="true"
                     android:padding="15dp"
                     android:scaleType="fitXY"
@@ -29,7 +29,6 @@
                 </ImageView>
 
             </RelativeLayout>
-
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
@@ -42,12 +41,12 @@
                 android:layout_weight="1">
 
                 <TextView
-                    android:id="@+id/nombreP"
+                    android:id="@+id/nombreCC"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerInParent="true"
                     android:text="Nombre"
-                    android:textSize="25dp">
+                    android:textSize="20dp">
 
                 </TextView>
 
@@ -58,12 +57,12 @@
                 android:orientation="horizontal"
                 android:layout_weight="1">
                 <RelativeLayout
-                    android:layout_width="match_parent"
+                    android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1">
 
                     <TextView
-                        android:id="@+id/precioP"
+                        android:id="@+id/valorCC"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerInParent="true"
@@ -74,12 +73,12 @@
 
                 </RelativeLayout>
                 <RelativeLayout
-                    android:layout_width="match_parent"
+                    android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1">
 
                     <TextView
-                        android:id="@+id/stockP"
+                        android:id="@+id/cantidadCC"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerInParent="true"
@@ -98,25 +97,21 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="4">
+            android:layout_weight="2">
             <RelativeLayout
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="match_parent">
 
                 <Button
-                    android:id="@+id/agregarPC"
+                    android:id="@+id/eliminarCC"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerInParent="true"
                     android:backgroundTint="@color/rojo"
-                    android:drawableRight="@drawable/baseline_shopping_cart_24"
-                    android:drawableTint="@color/white"
-                    android:text="Agregar al carrito"
-                    android:textColor="@color/white"
-                    android:textSize="20dp">
+                    android:contentDescription="Eliminar elemento seleccionado"
+                    android:drawableRight="@drawable/baseline_delete_24"
+                    android:drawableTint="@color/white"></Button>
 
-
-                </Button>
 
             </RelativeLayout>
 

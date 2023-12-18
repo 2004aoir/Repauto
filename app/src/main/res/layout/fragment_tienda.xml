@@ -1,14 +1,57 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".TiendaFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recycler_view_tienda"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <EditText
+            android:id="@+id/txt_ft_Buscar"
+            android:layout_width="290dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:hint="Buscar repuestos"
+            android:paddingStart="20dp"
+            android:paddingEnd="20dp"
+            android:drawableStart="@drawable/baseline_search_24"
+            android:drawableTint="@color/white"
+            android:background="@color/gris"
+            android:drawablePadding="8dp"
+            android:minHeight="48dp"/>
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="end">
 
-</FrameLayout>
+            <Button
+                android:id="@+id/btn_ft_buscar"
+                android:layout_width="70dp"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:backgroundTint="@color/azul"
+                android:contentDescription="Eliminar elemento seleccionado"
+                android:drawableLeft="@drawable/baseline_search_24"
+                android:drawableTint="@color/white"></Button>
+
+        </RelativeLayout>
+
+    </LinearLayout>
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/swipe_refresh_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_view_tienda"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+
+</LinearLayout>
