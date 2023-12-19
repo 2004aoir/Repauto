@@ -43,7 +43,8 @@ public class TiendaFragment extends Fragment {
         recyclerView = view.findViewById(R.id.recycler_view_tienda);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
-        Query query = mfirestore.collection("productos");
+        Query query = mfirestore.collection("productos")
+                .whereGreaterThan("stock", 0);
 
         FirestoreRecyclerOptions<Producto> firestoreRecyclerOptions =
                 new FirestoreRecyclerOptions.Builder<Producto>().setQuery(query, Producto.class).build();
@@ -57,7 +58,8 @@ public class TiendaFragment extends Fragment {
                 String textoBusqueda = Encontrar.getText().toString().trim();
 
                 Query query = mfirestore.collection("productos")
-                        .whereEqualTo("nombre", textoBusqueda);
+                        .whereEqualTo("nombre", textoBusqueda)
+                        .whereGreaterThan("stock", 0);
 
                 FirestoreRecyclerOptions<Producto> firestoreRecyclerOptions =
                         new FirestoreRecyclerOptions.Builder<Producto>()
@@ -76,7 +78,8 @@ public class TiendaFragment extends Fragment {
             @Override
             public void onRefresh() {
                 // Recargar la lista completa de productos al jalar hacia abajo
-                Query query = mfirestore.collection("productos");
+                Query query = mfirestore.collection("productos")
+                        .whereGreaterThan("stock", 0);
                 FirestoreRecyclerOptions<Producto> firestoreRecyclerOptions =
                         new FirestoreRecyclerOptions.Builder<Producto>()
                                 .setQuery(query, Producto.class)

@@ -99,7 +99,7 @@ public class ProductoAdaptador extends FirestoreRecyclerAdapter<Producto, Produc
         carritoInfo.put("nombreProducto", producto.getNombre());
         carritoInfo.put("precioProducto", producto.getPrecio());
         carritoInfo.put("imagenProducto", producto.getImageUrl());
-        carritoInfo.put("fechaRetiro","");
+        carritoInfo.put("fechaRetiro",null);
         carritoInfo.put("estadoProducto",estadoProducto);
         carritoInfo.put("cantidadProducto", cantidadP);
 
