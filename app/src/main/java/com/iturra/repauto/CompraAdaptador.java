@@ -44,8 +44,8 @@ public class CompraAdaptador extends FirestoreRecyclerAdapter<Compra, CompraAdap
 
         SimpleDateFormat formatoFecha = new SimpleDateFormat("dd/MM/yyyy");
 
-        String fechaC = "";
-        String fechaR = "";
+        String fechaC = "Error al mostrar fecha compra";
+        String fechaR = "Fecha no disponible";
 
         if (fechaCompra != null) {
             fechaC = formatoFecha.format(fechaCompra);

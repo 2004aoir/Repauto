@@ -224,8 +224,8 @@
             android:backgroundTint="@color/azul"
             android:drawableRight="@drawable/baseline_upload_24"
             android:drawableTint="@color/white"
-            android:textColor="@color/white"
             android:text="Añadir producto"
+            android:textColor="@color/white"
             android:textSize="30dp">
 
         </Button>

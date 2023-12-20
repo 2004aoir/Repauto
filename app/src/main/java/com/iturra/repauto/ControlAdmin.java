@@ -12,7 +12,7 @@ import com.google.firebase.auth.FirebaseAuth;
 
 public class ControlAdmin extends AppCompatActivity {
 
-    LinearLayout anadirProducto;
+    LinearLayout anadirProducto,atencionDeCompras;
     private FirebaseAuth mAuth;
     Button botonCerrarSesion;
 
@@ -23,12 +23,19 @@ public class ControlAdmin extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
 
         anadirProducto = findViewById(R.id.lay_ca_anadir_producto);
+        atencionDeCompras = findViewById(R.id.lay_ca_atencion_de_compras);
         botonCerrarSesion = findViewById(R.id.btn_admin_cerrar_sesion);
 
         anadirProducto.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(ControlAdmin.this,NuevoProducto.class));
+            }
+        });
+        atencionDeCompras.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(ControlAdmin.this,ComprasAdmin.class));
             }
         });
         botonCerrarSesion.setOnClickListener(new View.OnClickListener() {

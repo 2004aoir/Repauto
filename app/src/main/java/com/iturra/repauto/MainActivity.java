@@ -6,8 +6,10 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.app.Dialog;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.View;
@@ -98,7 +100,9 @@ public class MainActivity extends AppCompatActivity {
 
                 dialog.dismiss();
                 Toast.makeText(MainActivity.this,"Abriendo la ubicacion de la tienda",Toast.LENGTH_SHORT).show();
-
+                Uri uri = Uri.parse("geo:" + -36.6051013 + -72.1072441 + "?z=16&q=" + -36.6051013 + "," + -72.1072441);
+                Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+                startActivity(intent);
             }
         });
 

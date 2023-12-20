@@ -9,18 +9,20 @@ public class Compra {
     private Date fechaCompra;
     private Date fechaRetiro;
     private String imagenProducto;
+    private String idUsuario;
     private String nombreProducto;
     private int precioProducto;
 
     public Compra() {
     }
 
-    public Compra(int cantidadProducto, String estadoProducto, Date fechaCompra, Date fechaRetiro, String imagenProducto, String nombreProducto, int precioProducto) {
+    public Compra(int cantidadProducto, String estadoProducto, Date fechaCompra, Date fechaRetiro, String imagenProducto, String idUsuario, String nombreProducto, int precioProducto) {
         this.cantidadProducto = cantidadProducto;
         this.estadoProducto = estadoProducto;
         this.fechaCompra = fechaCompra;
         this.fechaRetiro = fechaRetiro;
         this.imagenProducto = imagenProducto;
+        this.idUsuario = idUsuario;
         this.nombreProducto = nombreProducto;
         this.precioProducto = precioProducto;
     }
@@ -63,6 +65,14 @@ public class Compra {
 
     public void setImagenProducto(String imagenProducto) {
         this.imagenProducto = imagenProducto;
+    }
+
+    public String getIdUsuario() {
+        return idUsuario;
+    }
+
+    public void setIdUsuario(String idUsuario) {
+        this.idUsuario = idUsuario;
     }
 
     public String getNombreProducto() {
